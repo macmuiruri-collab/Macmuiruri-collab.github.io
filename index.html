@@ -84,15 +84,26 @@
     @keyframes float {
       to { transform: translateY(-110vh); opacity: 0; }
     }
+
+    #tapHint{
+      position: fixed;
+      top: 15px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9em;
+      opacity: 0.85;
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- Background music -->
-  <audio autoplay loop>
+  <!-- Mobile-friendly background music -->
+  <audio id="bgMusic" loop>
     <source src="music.mp3" type="audio/mpeg">
   </audio>
+
+  <div id="tapHint">Tap anywhere to play music 🎵</div>
 
   <div class="card">
     <h1>Hi Grace ❤️</h1>
@@ -111,16 +122,25 @@
     </div>
 
     <div class="signature">
-      With love,<br>Brian ❤️
+      With love and see you tonight,<br>BM 😋❤️
     </div>
   </div>
 
   <script>
+    // Music start on first user interaction
+    document.body.addEventListener("click", () => {
+      const music = document.getElementById("bgMusic");
+      music.play().catch(()=>{});
+      const hint = document.getElementById("tapHint");
+      if(hint) hint.style.display = "none";
+    }, { once: true });
+
     function yesClick() {
       document.getElementById("buttons").classList.add("hidden");
       document.getElementById("celebration").classList.remove("hidden");
     }
 
+    // Runaway NO button 😈
     const noBtn = document.getElementById("noBtn");
     noBtn.addEventListener("mouseover", () => {
       const x = Math.random() * 200 - 100;
@@ -128,6 +148,7 @@
       noBtn.style.transform = `translate(${x}px, ${y}px)`;
     });
 
+    // Floating hearts
     setInterval(() => {
       const heart = document.createElement("div");
       heart.className = "heart";
