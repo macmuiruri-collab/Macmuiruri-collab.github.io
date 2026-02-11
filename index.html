@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Grace ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- WhatsApp / Social Preview -->
+  <meta property="og:title" content="Hi Grace ❤️">
+  <meta property="og:description" content="I made something special for you… will you be my Valentine? 💕">
+  <meta property="og:image" content="https://yourusername.github.io/preview.jpg">
+  <meta property="og:url" content="https://yourusername.github.io/">
+  <meta property="og:type" content="website">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.18);
+      padding: 30px;
+      border-radius: 25px;
+      text-align: center;
+      max-width: 360px;
+      width: 90%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    h1 { font-size: 2.2em; margin-bottom: 10px; }
+    p { font-size: 1.2em; margin-bottom: 20px; }
+
+    img {
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 22px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 8px;
+    }
+
+    .yes { background: #ff2e63; color: white; }
+    .no { background: white; color: #ff2e63; }
+
+    .hidden { display: none; }
+
+    .celebrate {
+      font-size: 1.8em;
+      animation: pop 0.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes pop {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    .signature {
+      margin-top: 25px;
+      font-style: italic;
+      font-size: 0.9em;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 22px;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      to { transform: translateY(-110vh); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background music -->
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>Hi Grace ❤️</h1>
+    <p>Will you be my Valentine?</p>
+
+    <img src="us.jpg" alt="Us together">
+
+    <div id="buttons">
+      <button class="yes" onclick="yesClick()">Yes 💕</button>
+      <button class="no" id="noBtn">No 😅</button>
+    </div>
+
+    <div id="celebration" class="hidden">
+      <div class="celebrate">Yaaay!! 💖💖💖</div>
+      <p>I can’t wait to make this Valentine’s special with you 🌹</p>
+    </div>
+
+    <div class="signature">
+      With love,<br>Brian ❤️
+    </div>
+  </div>
+
+  <script>
+    function yesClick() {
+      document.getElementById("buttons").classList.add("hidden");
+      document.getElementById("celebration").classList.remove("hidden");
+    }
+
+    const noBtn = document.getElementById("noBtn");
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 400);
+  </script>
+
+</body>
+</html>
